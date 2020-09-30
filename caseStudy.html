@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+
+        }
+
+        body {
+            margin: 0;
+        }
+
+        #Bar {
+            width: 100px;
+            height: 30px;
+            border: 4px solid black;
+            border-top-style: none;
+            border-left-style: none;
+            border-right-style: none;
+        }
+
+        canvas {
+            left: 20px;
+            top: 20px;
+            background: mistyrose;
+        }
+
+        #score {
+            width: 200px;
+            height: 100px;
+            margin-left: 25px;
+            font-size: 50px;
+            position: relative;
+        }
+
+        #GameOver {
+            width: 400px;
+            height: 86px;
+            font-size: 80px;
+            margin-left: 120px;
+            margin-top: 150px;
+            display: none;
+            position: relative;
+            text-align: center;
+        }
+        #ScoreGameOver {
+            width: 400px;
+            height: 86px;
+            font-size: 60px;
+            margin-left: 120px;
+            position: relative;
+            text-align: center;
+            display: none;
+        }
+        #rePlay{
+            width: 400px;
+            height: 86px;
+            font-size: 60px;
+            margin-left: 120px;
+            position: relative;
+            text-align: center;
+            display: none;
+        }
+        /*#Time{*/
+        /*    width: 400px;*/
+        /*    height: 150px;*/
+        /*    font-size: 80px;*/
+        /*    margin-left: 300px;*/
+        /*    margin-top: 82px;*/
+        /*}*/
+    </style>
+</head>
+<body onload="docReady()">
+<div id="container">
+    <canvas height="100" width="200" style="position:absolute;"></canvas>
+    <div id="Bar" style="position:relative;left:260px;top:500px"></div>
+</div>
+<div id="score">
+    Score: 0
+</div>
+<!--<div id="Time">-->
+<!--    3-->
+<!--</div>-->
+<div id="GameOver">
+    Game Over
+</div>
+<div id="ScoreGameOver">
+    Score: 0
+</div>
+<div id="rePlay"><button onclick="playAgain()">play again</button></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="caseStudy.js"></script>
+</body>
+</html>
