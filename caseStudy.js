@@ -1,15 +1,13 @@
 var canvas = document.querySelector("canvas")
 canvas.width = 600;
-
 canvas.height = 600;
-
 var audio = new Audio('ball.wav');
 var audioOver = new Audio('gameover.mp3');
-
-
 var c = canvas.getContext("2d");
 let gameStart = false;
-
+let count = 0;
+let circle = new Circle(170, 150, 2, 2, 10);
+let Xbar, Ybar;
 Swal.fire({
     title: 'Do you want to play the game?',
     showDenyButton: true,
@@ -24,30 +22,7 @@ Swal.fire({
         Swal.fire('thank you', '', 'info')
     }
 })
-// c.fillStyle = 'rgba(255, 0, 0 ,0.1)'
-// c.fillRect(100,100,100,100)
-// c.fillRect(400,100,100,100)
-// c.fillRect(300,300,100,100)
-// console.log(canvas)
-//
-// //line
-// c.beginPath();
-// c.moveTo(50,300);
-// c.lineTo(300,100);
-// c.lineTo(400,300);
-// c.strokeStyle = "blue"
-// c.stroke();
 
-// // arr / circle
-// for (var i = 0; i < 25; i++){
-//     var x = Math.random() * window.innerWidth
-//     var y = Math.random()* window.innerHeight
-//     c.beginPath()
-//     c.arc(x,y,30,0, Math.PI*2,false)
-//     c.stroke();
-// }
-
-let count = 0;
 
 function Circle(x, y, dx, dy, radius) {
     this.x = x;
@@ -104,16 +79,6 @@ function playAgain() {
     location.reload();
 }
 
-// var circleArray = [];
-// for (var i = 0; i < 100; i++){
-//     var radius = 30;
-
-//     var dx = 4;
-//     var dy = 4;
-//     circleArray.push(new Circle(x,y,dx,dy,radius));
-// }
-let circle = new Circle(170, 150, 2, 2, 10)
-let Xbar, Ybar;
 
 function animate() {
     requestAnimationFrame(animate);
@@ -126,10 +91,7 @@ function animate() {
     circle.update()
 }
 
-function TimeDown() {
-    let time = 3;
-    setInterval()
-}
+
 
 function docReady() {
     window.addEventListener('keydown', moveSelection);
