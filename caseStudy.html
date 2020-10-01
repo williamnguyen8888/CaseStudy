@@ -14,7 +14,7 @@
         #Bar {
             width: 100px;
             height: 30px;
-            border: 4px solid black;
+            border: 4px solid red;
             border-top-style: none;
             border-left-style: none;
             border-right-style: none;
@@ -23,6 +23,10 @@
             left: 20px;
             top: 20px;
             background: mistyrose;
+            background-image: url("backg3.gif");
+            background-color: #cccccc;
+            background-repeat: no-repeat;
+            background-size: 950px;
         }
         #score {
             width: 200px;
@@ -30,6 +34,8 @@
             margin-left: 25px;
             font-size: 50px;
             position: relative;
+            color: greenyellow;
+
         }
         #GameOver {
             width: 400px;
@@ -40,6 +46,7 @@
             display: none;
             position: relative;
             text-align: center;
+            color: red;
         }
         #ScoreGameOver {
             width: 400px;
@@ -49,6 +56,7 @@
             position: relative;
             text-align: center;
             display: none;
+            color: red;
         }
         #rePlay{
             width: 400px;
@@ -58,6 +66,15 @@
             position: relative;
             text-align: center;
             display: none;
+        }
+        button{
+            background: rgb(34,193,195);
+            background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+            color: greenyellow;
+            border: none;
+        }
+        #Theme{
+            margin-left: 45%;
         }
     </style>
 </head>
@@ -79,6 +96,11 @@
     Score: 0
 </div>
 <div id="rePlay"><button onclick="playAgain()">play again</button></div>
+<!--<select name="" id="Theme" onclick="ChangeTheme()">-->
+<!--    <option value="">Chose Theme</option>-->
+<!--    <option value="1">Themes Game 1</option>-->
+<!--    <option value="2">Themes Game 2</option>-->
+<!--</select>-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="caseStudy.js"></script>

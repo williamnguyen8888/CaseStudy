@@ -3,6 +3,7 @@ canvas.width = 600;
 canvas.height = 600;
 var audio = new Audio('ball.wav');
 var audioOver = new Audio('gameover.mp3');
+var audioBack = new Audio('backr2.mp3');
 var c = canvas.getContext("2d");
 let gameStart = false;
 let count = 0;
@@ -13,13 +14,13 @@ Swal.fire({
     showDenyButton: true,
 
     confirmButtonText: `Play`,
-    denyButtonText: `Don't Play`,
+    denyButtonText: `Select Theme`,
 }).then((result) => {
     /* Read more about isConfirmed, isDenied below */
     if (result.isConfirmed) {
         gameStart = true;
     } else if (result.isDenied) {
-        Swal.fire('thank you', '', 'info')
+        ChangeTheme()
     }
 })
 
@@ -32,14 +33,14 @@ function Circle(x, y, dx, dy, radius) {
     this.radius = radius;
     this.draw = function () {
         c.beginPath()
+        c.fillStyle = "red";
         c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
         c.stroke();
-        c.fill()
+        c.fill();
     }
     this.update = function () {
         if (this.x + this.radius > Xbar - 10 && this.x + this.radius < (-parseInt($("#Bar").css('right')) + 100) && (this.y + this.radius) == Ybar + 20) {
-            audio.play()
-
+            audio.play();
             this.dy = -this.dy;
             count++;
             document.getElementById("score").innerHTML = "Score: " + count;
@@ -63,8 +64,9 @@ function Circle(x, y, dx, dy, radius) {
             $("#ScoreGameOver").show(1000);
             $("#GameOver").show(2000);
             document.getElementById("score").innerHTML = "Score: " + count;
+            $("#Theme").hide();
             audioOver.play()
-
+            audioBack.pause();
         }
 
 
@@ -92,7 +94,6 @@ function animate() {
 }
 
 
-
 function docReady() {
     window.addEventListener('keydown', moveSelection);
 }
@@ -106,6 +107,7 @@ function leftArrowPressed() {
         if (gameStart) {
             $("#Bar").css('left', '-=20');
             if (flag) {
+                audioBack.play()
                 animate()
                 flag = false;
             }
@@ -124,6 +126,7 @@ function rightArrowPressed() {
             $("#Bar").css('left', '+=20');
 
             if (flag) {
+                audioBack.play()
                 animate()
                 flag = false;
             }
@@ -142,4 +145,28 @@ function moveSelection(evt) {
             rightArrowPressed();
             break;
     }
+}
+
+function ChangeTheme() {
+    const inputOptions = new Promise((resolve) => {
+        setTimeout(() => {
+            resolve({
+
+            })
+        }, 1000)
+    })
+
+    const {value: color} = Swal.fire({
+
+        title: 'Select color',
+        input: 'radio',
+        inputOptions: inputOptions,
+        inputValidator: (value) => {
+            if (!value) {
+                return 'You need to choose something!'
+            }
+        }
+    })
+
+
 }
