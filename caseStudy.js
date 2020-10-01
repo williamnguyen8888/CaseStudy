@@ -14,13 +14,14 @@ Swal.fire({
     showDenyButton: true,
 
     confirmButtonText: `Play`,
-    denyButtonText: `Select Theme`,
+    denyButtonText: `Chose Theme`,
 }).then((result) => {
     /* Read more about isConfirmed, isDenied below */
     if (result.isConfirmed) {
         gameStart = true;
     } else if (result.isDenied) {
-        ChangeTheme()
+        ChangeTheme();
+        gameStart = true;
     }
 })
 
@@ -94,6 +95,7 @@ function animate() {
 }
 
 
+
 function docReady() {
     window.addEventListener('keydown', moveSelection);
 }
@@ -147,10 +149,23 @@ function moveSelection(evt) {
     }
 }
 
-function ChangeTheme() {
+function ChangeTheme(){
+    // let theme = document.getElementById("Theme")
+    // if (theme.value == 1){
+    //     $('canvas').css('background-image', 'url(' + 'backg.gif' + ')');
+    //     $('canvas').css('background-size', '750px');
+    //     audioBack = new Audio('backr.mp3');
+    // }else if(theme.value == 2) {
+    //     $('canvas').css('background-image', 'url(' + 'backg3.gif' + ')');
+    //     $('canvas').css('background-size', '950px');
+    //     audioBack = new Audio('backr2.mp3');
+    // }
+
     const inputOptions = new Promise((resolve) => {
         setTimeout(() => {
             resolve({
+                'Theme 11': 'Theme 1',
+                'Theme 22': 'Theme 2'
 
             })
         }, 1000)
@@ -162,11 +177,15 @@ function ChangeTheme() {
         input: 'radio',
         inputOptions: inputOptions,
         inputValidator: (value) => {
-            if (!value) {
-                return 'You need to choose something!'
+            if (value == "Theme 11") {
+                $('canvas').css('background-image', 'url(' + 'backg.gif' + ')');
+                    $('canvas').css('background-size', '750px');
+                    audioBack = new Audio('backr.mp3');
+            }if (value == "Theme 22") {
+                $('canvas').css('background-image', 'url(' + 'backg3.gif' + ')');
+                    $('canvas').css('background-size', '950px');
+                    audioBack = new Audio('backr2.mp3');
             }
         }
     })
-
-
 }
